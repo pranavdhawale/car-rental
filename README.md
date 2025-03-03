@@ -1,10 +1,10 @@
-<h2>Vehicle Rental System - Microservices and Architecture Project </h2>
+<h1>Vehicle Rental System - Microservices and Architecture Project</h1>
 
 This project is a microservices-based Vehicle Rental System developed using Spring Boot and Spring Cloud OpenFeign. It consists of six microservices:
 
-#Rental Service:# Handles car rentals for users, checking availability with Inventory Service and processing payments with Payment Service.
+Rental Service: Handles car rentals for users, checking availability with Inventory Service and processing payments with Payment Service.
 
-# Payment Service:  Manages rental payments, verifying and processing transactions.
+Payment Service:  Manages rental payments, verifying and processing transactions.
 
 Maintenance Service: Admin service for scheduling maintenance, updating Inventory and Filter services accordingly.
 
