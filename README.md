@@ -1,1 +1,1 @@
-# Microservices and Architecture: Car Rental Service
+# Car Rental Service
