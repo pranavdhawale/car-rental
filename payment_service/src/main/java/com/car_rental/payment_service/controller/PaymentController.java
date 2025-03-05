@@ -4,6 +4,7 @@ import com.car_rental.payment_service.dto.PaymentRequestDTO;
 import com.car_rental.payment_service.dto.PaymentResponseDTO;
 import com.car_rental.payment_service.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,12 @@ public class PaymentController {
 
 
     @PostMapping("/process")
-    public PaymentResponseDTO processPayment(@RequestBody PaymentRequestDTO request) {
-        return paymentService.processPayment(request);
+    public ResponseEntity<String> processPayment(@RequestBody PaymentRequestDTO request) {
+        // Simulate payment validation (e.g., checking balance)
+        if (request.getBalance() >= 1000) {
+            return ResponseEntity.ok("Payment Successful!");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Insufficient Balance");
+        }
     }
 }

@@ -1,11 +1,14 @@
 package com.car_rental.rental_service.service.impl;
 
+import com.car_rental.rental_service.client.PaymentClient;
+import com.car_rental.rental_service.dto.PaymentRequestDTO;
 import com.car_rental.rental_service.dto.RentalDTO;
 import com.car_rental.rental_service.entity.Rental;
 import com.car_rental.rental_service.exception.ResourceNotFoundException;
 import com.car_rental.rental_service.repository.RentalRepository;
 import com.car_rental.rental_service.service.RentalService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,10 +20,11 @@ public class RentalServiceImpl implements RentalService {
 
     private final RentalRepository rentalRepository;
     private final ModelMapper modelMapper;
-
-    public RentalServiceImpl(RentalRepository rentalRepository, ModelMapper modelMapper) {
+    private final PaymentClient paymentClient;
+    public RentalServiceImpl(RentalRepository rentalRepository, ModelMapper modelMapper, PaymentClient paymentClient) {
         this.rentalRepository = rentalRepository;
         this.modelMapper = modelMapper;
+        this.paymentClient = paymentClient;
     }
 
     @Override
@@ -65,5 +69,18 @@ public class RentalServiceImpl implements RentalService {
             throw new ResourceNotFoundException("Rental not found with id: " + id);
         }
         rentalRepository.deleteById(id);
+    }
+
+    public String rentCar(Rental rental, PaymentRequestDTO paymentRequestDTO) {
+        // Step 1: Process Payment
+        ResponseEntity<String> response = paymentClient.processPayment(paymentRequestDTO);
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            // Step 2: Save rental details if payment is successful
+            rentalRepository.save(rental);
+            return "Car rented successfully!";
+        } else {
+            return "Payment failed!";
+        }
     }
 }
