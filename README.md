@@ -119,7 +119,7 @@ This project is a microservices-based **Vehicle Rental System** developed using 
 
 ## 💡 Future Enhancements
 
-- **Monitoring and Metrics**: Use **Prometheus** and **Grafana** for real-time system health monitoring.
+- **Monitoring and Metrics**: Use **Prometheus** and **Grafana** for system health monitoring.
 - **Service Discovery & Routing**: Implement **Spring Cloud Gateway** for routing and **Eureka Service Registry** for dynamic service registration.
 - **Event-Driven Communication**: Integrate **Apache Kafka** for event-based communication (e.g., rental transactions, invoice generation).
 - **Containerization**: Deploy microservices, databases, and Kafka in **Docker** for portability and scalability.
