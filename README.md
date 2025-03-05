@@ -18,6 +18,79 @@ This project is a microservices-based **Vehicle Rental System** developed using 
 - **Build Tool**: Maven
 - **REST Client**: Postman or any other tool
 
+## API Endpoints
+
+### 1. Rental Service (http://localhost:8080)
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | /api/rentals/create | Create a new rental entry. |
+| GET | /api/rentals/get/{id} | Retrieve rental details by rental ID. |
+| GET | /api/rentals/get-all | Fetch a list of all rentals. |
+| PUT | /api/rentals/update/{id} | Update rental details by rental ID. |
+| DELETE | /api/rentals/delete/{id} | Delete a rental entry by rental ID. |
+
+### 2. Payment Service (http://localhost:8082)
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | /api/payments/create | Create a new payment transaction. |
+| GET | /api/payments/get/{id} | Retrieve payment details by payment ID. |
+| GET | /api/payments/get-all | Fetch a list of all payments. |
+| DELETE | /api/payments/delete/{id} | Delete a payment entry by payment ID. |
+
+### 3. Maintenance Service (http://localhost:8084)
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | /api/maintenance/create | Create a new maintenance record. |
+| GET | /api/maintenance/get/{id} | Retrieve maintenance details by ID. |
+| GET | /api/maintenance/get-all | Fetch a list of all maintenance records. |
+| PUT | /api/maintenance/update/{id} | Update maintenance details by ID. |
+| DELETE | /api/maintenance/delete/{id} | Delete a maintenance record by ID. |
+
+### 4. Invoice Service (http://localhost:8083)
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | /api/invoices/create | Create a new invoice. |
+| GET | /api/invoices/get/{id} | Retrieve invoice details by ID. |
+| GET | /api/invoices/get-all | Fetch a list of all invoices. |
+| DELETE | /api/invoices/delete/{id} | Delete an invoice by ID. |
+
+### 5. Inventory Service (http://localhost:8081)
+#### Brand Endpoints
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| GET | /api/brands/get-all | Fetch a list of all brands. |
+| GET | /api/brands/get/{id} | Retrieve brand details by ID. |
+| POST | /api/brands/create | Create a new brand entry. |
+| DELETE | /api/brands/delete/{id} | Delete a brand by ID. |
+
+#### Car Endpoints
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| GET | /api/cars/get-all | Fetch a list of all cars. |
+| GET | /api/cars/get/{id} | Retrieve car details by ID. |
+| POST | /api/cars/create | Create a new car entry. |
+| DELETE | /api/cars/delete/{id} | Delete a car by ID. |
+
+#### Model Endpoints
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| GET | /api/models/get-all | Fetch a list of all models. |
+| GET | /api/models/get/{id} | Retrieve model details by ID. |
+| POST | /api/models/create | Create a new model entry. |
+| DELETE | /api/models/delete/{id} | Delete a model by ID. |
+
+### 6. Filter Service (http://localhost:8085)
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | /api/filters/create | Create a new filter. |
+| GET | /api/filters/get/{id} | Retrieve filter details by ID. |
+| GET | /api/filters/get-all | Fetch a list of all filters. |
+| GET | /api/filters/brand/{brandName} | Get filters by brand name. |
+| GET | /api/filters/model/{modelName} | Get filters by model name. |
+| DELETE | /api/filters/delete/{id} | Delete a filter by ID. |
+
+
+
 ## 🔗 Communication Between Services
 
 - **Rental → Inventory**: The Rental Service requests Inventory Service to check car availability before proceeding with a rental.
