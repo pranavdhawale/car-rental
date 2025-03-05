@@ -11,4 +11,6 @@ public interface PaymentService {
     PaymentResponseDTO getPaymentById(UUID id);
     List<PaymentResponseDTO> getAllPayments();
     void deletePayment(UUID id);
+
+    PaymentResponseDTO processPayment(PaymentRequestDTO request);
 }

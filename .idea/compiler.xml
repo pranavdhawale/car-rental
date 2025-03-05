@@ -3,22 +3,28 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for rental-service" enabled="true">
+      <profile name="Annotation profile for invoice_service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
-        <module name="payment_service" />
         <module name="inventory_service" />
         <module name="rental-service" />
+        <module name="maintenance_service" />
+        <module name="filter_service" />
+        <module name="payment_service" />
+        <module name="invoice_service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="filter_service" options="-parameters" />
       <module name="inventory_service" options="-parameters" />
+      <module name="invoice_service" options="-parameters" />
+      <module name="maintenance_service" options="-parameters" />
       <module name="payment_service" options="-parameters" />
       <module name="rental-service" options="-parameters" />
     </option>

@@ -29,7 +29,21 @@ public class PaymentServiceImpl implements PaymentService {
         payment = paymentRepository.save(payment);
         return modelMapper.map(payment, PaymentResponseDTO.class);
     }
+    public PaymentResponseDTO processPayment(PaymentRequestDTO request) {
+        // Store payment details in the database
+        Payment payment = new Payment();
+        payment.setCardNumber(request.getCardNumber());
+        payment.setCardHolder(request.getCardHolder());
+        payment.setCardExpirationYear(request.getCardExpirationYear());
+        payment.setCardExpirationMonth(request.getCardExpirationMonth());
+        payment.setCardCvv(request.getCardCvv());
+        payment.setBalance(request.getBalance());
 
+        paymentRepository.save(payment);
+
+        // Return response
+        return new PaymentResponseDTO(payment.getId(), payment.getCardHolder(), payment.getBalance());
+    }
     @Override
     public PaymentResponseDTO getPaymentById(UUID id) {
         Payment payment = paymentRepository.findById(id)

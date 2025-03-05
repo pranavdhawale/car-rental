@@ -1,5 +1,8 @@
 package com.car_rental.rental_service.controller;
 
+import com.car_rental.rental_service.client.PaymentClient;
+import com.car_rental.rental_service.dto.PaymentRequestDTO;
+import com.car_rental.rental_service.dto.PaymentResponseDTO;
 import com.car_rental.rental_service.dto.RentalDTO;
 import com.car_rental.rental_service.service.RentalService;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +17,9 @@ public class RentalController {
 
     private final RentalService rentalService;
 
-    public RentalController(RentalService rentalService) {
+    public RentalController(RentalService rentalService, PaymentClient paymentClient) {
         this.rentalService = rentalService;
+        this.paymentClient = paymentClient;
     }
 
     @PostMapping("create")
@@ -43,4 +47,13 @@ public class RentalController {
         rentalService.deleteRental(id);
         return ResponseEntity.noContent().build();
     }
+
+    private final PaymentClient paymentClient;
+
+    @PostMapping("/pay")
+    public ResponseEntity<String> processPayment(@RequestBody PaymentRequestDTO paymentRequest) {
+        // Handle the request
+        return ResponseEntity.ok("Payment processed successfully");
+    }
+
 }

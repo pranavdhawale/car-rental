@@ -38,4 +38,10 @@ public class PaymentController {
         paymentService.deletePayment(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    @PostMapping("/process")
+    public PaymentResponseDTO processPayment(@RequestBody PaymentRequestDTO request) {
+        return paymentService.processPayment(request);
+    }
 }
