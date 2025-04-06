@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rental-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rental-service
+  template:
+    metadata:
+      labels:
+        app: rental-service
+    spec:
+      containers:
+        - name: rental-service
+          image: anoushkadash/rental-service:latest
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rental-service
+spec:
+  selector:
+    app: rental-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoice-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invoice-service
+  template:
+    metadata:
+      labels:
+        app: invoice-service
+    spec:
+      containers:
+        - name: invoice-service
+          image: anoushkadash/invoice-service:latest
+          ports:
+            - containerPort: 8083
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invoice-service
+spec:
+  selector:
+    app: invoice-service
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+        - name: payment-service
+          image: anoushkadash/payment-service:latest
+          ports:
+            - containerPort: 8081
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+spec:
+  selector:
+    app: payment-service
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-service
+  template:
+    metadata:
+      labels:
+        app: inventory-service
+    spec:
+      containers:
+        - name: inventory-service
+          image: anoushkadash/inventory-service:latest
+          ports:
+            - containerPort: 8084
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-service
+spec:
+  selector:
+    app: inventory-service
+  ports:
+    - protocol: TCP
+      port: 8084
+      targetPort: 8084
+  type: ClusterIP
