@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  inventory-service:
+    build:
+      context: ./inventory_service
+    container_name: inventory-service
+    ports:
+      - "8084:8084"
+    networks:
+      - app-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+
+  invoice-service:
+    build:
+      context: ./invoice_service
+    container_name: invoice-service
+    ports:
+      - "8083:8083"
+    networks:
+      - app-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+
+  payment-service:
+    build:
+      context: ./payment_service
+    container_name: payment-service
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+
+  rental-service:
+    build:
+      context: ./rental-service
+    container_name: rental-service
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+
+networks:
+  app-network:
+    driver: bridge
