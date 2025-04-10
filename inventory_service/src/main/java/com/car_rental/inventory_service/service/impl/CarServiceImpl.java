@@ -1,9 +1,11 @@
 package com.car_rental.inventory_service.service.impl;
 
+import com.car_rental.inventory_service.entity.enums.CarState;
 import com.car_rental.inventory_service.entity.Car;
 import com.car_rental.inventory_service.exception.ResourceNotFoundException;
 import com.car_rental.inventory_service.repository.CarRepository;
 import com.car_rental.inventory_service.service.CarService;
+//import com.car_rental.rental_service.dto.CarResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,4 +42,5 @@ public class CarServiceImpl implements CarService {
         }
         carRepository.deleteById(id);
     }
+
 }
