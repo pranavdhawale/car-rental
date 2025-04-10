@@ -6,7 +6,6 @@ import com.car_rental.payment_service.entity.Payment;
 import com.car_rental.payment_service.exception.PaymentNotFoundException;
 import com.car_rental.payment_service.repository.PaymentRepository;
 import com.car_rental.payment_service.service.PaymentService;
-import feign.FeignException;
 import org.modelmapper.ModelMapper;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
