@@ -9,7 +9,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentResponseDTO {
-    private UUID id;
-    private String cardHolder;
-    private double balance;
+    private boolean success;
+    private String message;
+    private UUID paymentId;
 }

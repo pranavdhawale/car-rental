@@ -42,12 +42,13 @@ public class PaymentController {
 
 
     @PostMapping("/process")
-    public ResponseEntity<String> processPayment(@RequestBody PaymentRequestDTO request) {
-        // Simulate payment validation (e.g., checking balance)
-        if (request.getBalance() >= 1000) {
-            return ResponseEntity.ok("Payment Successful!");
+    public ResponseEntity<PaymentResponseDTO> processPayment(@RequestBody PaymentRequestDTO request) {
+        PaymentResponseDTO response = paymentService.processPayment(request);
+        if (response.isSuccess()) {
+            return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Insufficient Balance");
+            // e.g., 400 Bad Request for failed payment, or 500 for internal errors
+            return ResponseEntity.badRequest().body(response);
         }
     }
 }
