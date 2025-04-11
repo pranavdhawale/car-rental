@@ -37,24 +37,7 @@ This project is a microservices-based **Vehicle Rental System** developed using 
 | GET | /api/payments/get-all | Fetch a list of all payments. |
 | DELETE | /api/payments/delete/{id} | Delete a payment entry by payment ID. |
 
-### 3. Maintenance Service (http://localhost:8084)
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST | /api/maintenance/create | Create a new maintenance record. |
-| GET | /api/maintenance/get/{id} | Retrieve maintenance details by ID. |
-| GET | /api/maintenance/get-all | Fetch a list of all maintenance records. |
-| PUT | /api/maintenance/update/{id} | Update maintenance details by ID. |
-| DELETE | /api/maintenance/delete/{id} | Delete a maintenance record by ID. |
-
-### 4. Invoice Service (http://localhost:8083)
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST | /api/invoices/create | Create a new invoice. |
-| GET | /api/invoices/get/{id} | Retrieve invoice details by ID. |
-| GET | /api/invoices/get-all | Fetch a list of all invoices. |
-| DELETE | /api/invoices/delete/{id} | Delete an invoice by ID. |
-
-### 5. Inventory Service (http://localhost:8081)
+### 3. Inventory Service (http://localhost:8081)
 #### Brand Endpoints
 | Method | Endpoint | Description |
 |--------|---------|-------------|
@@ -78,18 +61,6 @@ This project is a microservices-based **Vehicle Rental System** developed using 
 | GET | /api/models/get/{id} | Retrieve model details by ID. |
 | POST | /api/models/create | Create a new model entry. |
 | DELETE | /api/models/delete/{id} | Delete a model by ID. |
-
-### 6. Filter Service (http://localhost:8085)
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST | /api/filters/create | Create a new filter. |
-| GET | /api/filters/get/{id} | Retrieve filter details by ID. |
-| GET | /api/filters/get-all | Fetch a list of all filters. |
-| GET | /api/filters/brand/{brandName} | Get filters by brand name. |
-| GET | /api/filters/model/{modelName} | Get filters by model name. |
-| DELETE | /api/filters/delete/{id} | Delete a filter by ID. |
-
-
 
 ## 🔗 Communication Between Services
 
